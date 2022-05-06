@@ -1,18 +1,32 @@
+using Business.Abstract;
+using Business.Concrete;
+using DataAccess;
+using Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using WebUI.Data;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+builder.Services.AddDbContext<BeautyDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<User>()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<BeautyDbContext>();
+
+
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<ISliderManager, SliderManager>();
+builder.Services.ConfigureApplicationCookie(option =>
+{
+    option.LoginPath = "/auth/login";
+    option.AccessDeniedPath = "/auth/login";
+});
+
 
 var app = builder.Build();
 
@@ -35,6 +49,11 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapControllerRoute(
+     name: "areas",
+     pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
+
 
 app.MapControllerRoute(
     name: "default",

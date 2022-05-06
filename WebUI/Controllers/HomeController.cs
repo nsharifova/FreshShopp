@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Business.Abstract;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebUI.Models;
+using WebUI.ViewModels;
 
 namespace WebUI.Controllers
 {
@@ -8,13 +10,21 @@ namespace WebUI.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ISliderManager _sliderManager;
+
+        public HomeController(ILogger<HomeController> logger, ISliderManager sliderManager)
         {
             _logger = logger;
+            _sliderManager = sliderManager;
         }
 
         public IActionResult Index()
         {
+            HomeVM vm = new() 
+            {
+                Sliders = _sliderManager.GetAll(),
+            };
+
             return View();
         }
 
