@@ -10,17 +10,20 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<BeautyDbContext>(options =>
+builder.Services.AddDbContext<FreshDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<User>()
     .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<BeautyDbContext>();
+    .AddEntityFrameworkStores<FreshDbContext>();
 
-
+builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ISliderManager, SliderManager>();
+builder.Services.AddScoped<IProductManager, ProductManager>();
+builder.Services.AddScoped<ICategoryManager, CategoryManager>();
 builder.Services.ConfigureApplicationCookie(option =>
 {
     option.LoginPath = "/auth/login";

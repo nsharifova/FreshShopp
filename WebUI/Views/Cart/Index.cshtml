@@ -1,0 +1,136 @@
+﻿@model CartVM
+
+    <!-- Start Cart  -->
+    <div class="cart-box-main">
+        <div class="container">
+
+        @if(Model!=null && Model.CartItems != null)
+        {
+              <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-main table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Images</th>
+                                    <th>Product Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th>Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 @{
+                                        decimal totalPrice = 0;
+                                   }
+                         @foreach (var item in Model.CartItems)
+                         {
+                                  var quantity = Model.ProIds.Where(c => c == item.Id).Count();
+                                   totalPrice += item.Price * quantity;
+                             
+
+                                <tr>
+                                    <td class="thumbnail-img">
+                                        <a href="#">
+									<img class="img-fluid" src="@item.PhotoUrl" alt="" />
+								</a>
+                                    </td>
+
+                                    <td class="name-pr">
+                                        <a href="#">
+							            @item.Name
+								      </a>
+                                    </td>
+                                        @if(item.Discount !=null && item.Discount>0)
+                                        {
+                                            <td class="price-pr">
+                                            <p>@item.TotalPrice</p>
+                                            </td>
+
+                                        }
+                                        else
+                                        {
+                                            <td class="price-pr">
+                                                <p>@item.Price</p>
+                                            </td>
+                                        }
+
+                                    <td class="quantity-box"><input type="number" size="4" value="@quantity" min="0" step="1" class="c-input-text qty text"></td>
+
+                                
+                                 
+                                    <td class="total-pr">
+                                        <p>
+                                        @if(item.Discount !=null && item.Discount>0)
+                                        {
+                                           @(item.TotalPrice*quantity)
+
+                                        }
+                                        else
+                                        {
+                                         @(item.Price*quantity)
+                                        } 
+                                            
+                                            AZN
+                                        </p>
+                                    </td>
+                                    <td class="remove-pr product-remove" pro-id="@item.Id">
+                                        <a href="#">
+									<i class="fas fa-times"></i>
+								</a>
+                                    </td>
+                                </tr>
+                             
+                         }
+
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+
+         <div class="row my-5">
+                <div class="col-lg-6 col-sm-6">
+                    <div class="coupon-box">
+                        <div class="input-group input-group-sm">
+                            <input class="form-control" placeholder="Enter your coupon code" aria-label="Coupon code" type="text">
+                            <div class="input-group-append">
+                                <button class="btn btn-theme" type="button">Apply Coupon</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <div class="order-box">
+                        <h3>Order summary</h3>
+                       
+                        <div class="d-flex gr-total">
+                            <h5>Grand Total</h5>
+                            <div class="ml-auto h5"></div>
+                        </div>
+                        <hr> 
+                    </div>
+                </div>
+                                <div class="col-12 d-flex shopping-box"><a href="checkout.html" class="ml-auto btn hvr-hover">Checkout</a> </div>
+
+            </div>
+
+           
+           
+              
+            
+
+
+        }
+        else
+        {
+                   <p class="alert alert-danger">"Cart is empty!"</p>
+        }
+
+
+        </div>
+</div>

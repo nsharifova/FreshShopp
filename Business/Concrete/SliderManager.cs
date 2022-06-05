@@ -11,9 +11,9 @@ namespace Business.Concrete
 {
    public class SliderManager : ISliderManager
     {
-        private readonly BeautyDbContext _context;
+        private readonly FreshDbContext _context;
 
-        public SliderManager(BeautyDbContext context)
+        public SliderManager(FreshDbContext context)
         {
             _context = context;
         }

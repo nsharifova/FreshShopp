@@ -1,23 +1,7 @@
-/*------------------------------------------------------------------
-    IMPORT FONTS
--------------------------------------------------------------------*/
+
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800');
 @import url('https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700');
-
-
-/*
-
-    font-family: 'Poppins', sans-serif;
-
-    font-family: 'Dosis', sans-serif;
-
-*/
-
-/*------------------------------------------------------------------
-    IMPORT FILES
--------------------------------------------------------------------*/
-
 @import url(all.css);
 @import url(superslides.css);
 @import url(bootstrap-select.css);
@@ -98,6 +82,8 @@
      -o-transition: all .3s ease-in-out;
      transition: all .3s ease-in-out;
 }
+
+
  .btn-custom {
      margin-top: 20px;
      background-color: transparent !important;
@@ -245,6 +231,7 @@
  .our-link{
      float: left;
 }
+ 
  .our-link ul li{
      display: inline-block;
      border-right: 1px solid #ffffff;
@@ -268,45 +255,35 @@
 }
 .login-box{
     float: right;
-    width: 120px;
-    margin-left: 20px;
+ 
 }
 
-.login-box .form-control{
-     background: none;
-     border: none;
-}
- .login-box .bootstrap-select .btn-light{
-     padding: 4px;
-     font-size: 14px;
-     background: #b0b435;
-     color: #fff;
-     border: none;
-     border-radius: 0px;
-}
- .login-box .bootstrap-select .btn-light span{
-     padding: 2px;
-     line-height: 15px;
-}
-.login-box .dropdown-toggle::after {
-     display: inline-block;
-     width: 0;
-     height: 0;
-     margin-left: .255em;
-     vertical-align: .255em;
-     content: "";
-     border-top: .3em solid;
-     border-right: .3em solid transparent;
-     border-bottom: 0;
-     border-left: .3em solid transparent;
-     position: absolute;
-     top: 13px;
-     right: 10px;
+.login-box ul li {
+    display: inline-block;
+    border-right: 1px solid #ffffff;
+    padding: 0px 10px;
+    line-height: 14px;
 }
 
-.login-box .dropdown-item{
-	padding: 5px 10px;
+.login-box ul {
+    line-height: 30px;
 }
+
+.login-box ul li a {
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.login-box ul li a:hover {
+    color: #b0b435;
+}
+
+.login-box ul li:last-child {
+    border: none;
+}
+
 
 .bootstrap-select.btn-group .dropdown-menu a.dropdown-item span.dropdown-item-inner span.text{
 	font-size: 13px;
@@ -2056,8 +2033,22 @@
      border: 2px solid #000000;
      text-align: center;
 }
- .quantity-box input:focus{
-     border-color: #b0b435;
+
+
+
+td.product-quantity input {
+    color: #000;
+    font-size: 14px;
+    font-weight: normal;
+    border: 1px solid #dcdcdc;
+}
+
+td.product-quantity > input {
+    width: 80px;
+    border-radius: 3px;
+}
+ td.quantity-box input:focus{
+     border-color: #b0b435; 
 }
  .name-pr a{
      font-weight: 700;

@@ -11,21 +11,28 @@ namespace WebUI.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private readonly ISliderManager _sliderManager;
+        private readonly IProductManager _productManager;
+        private readonly ICategoryManager _categoryManager;
 
-        public HomeController(ILogger<HomeController> logger, ISliderManager sliderManager)
+        public HomeController(ILogger<HomeController> logger, ISliderManager sliderManager, IProductManager productManager, ICategoryManager categoryManager)
         {
             _logger = logger;
             _sliderManager = sliderManager;
+            _productManager = productManager;
+            _categoryManager = categoryManager;
         }
 
         public IActionResult Index()
         {
             HomeVM vm = new() 
             {
+                
                 Sliders = _sliderManager.GetAll(),
+                Products = _productManager.GetAll(),
+                Categories = _categoryManager.GetAll(),
             };
 
-            return View();
+            return View(vm);
         }
 
         public IActionResult Privacy()

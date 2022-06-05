@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Entities.Slider>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a style="color:black;font-weight:600" class="btn btn-success form-control" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+               <img width="100" height="110" style = "object-fit:cover" src=" @Html.DisplayFor(modelItem => item.PhotoUrl)"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+
+         
+            <td class="d-flex align-items-center">
+                    <a class="btn btn-primary me-2" asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a> &nbsp; &nbsp;
+                    <form id="productRemove" method="post" asp-action="Delete">
+                        <input type="hidden" value=@item.Id name="Id" />
+                        <button  class="btn btn-danger btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                    </form> &nbsp; &nbsp;
+
+                    <a class="btn btn-warning" href="/Admin/Header/Details/@item.Id">Details</a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section Scripts{
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/frontadmin/assets/js/delete.js"></script>
+
+
+}

@@ -1,0 +1,112 @@
+﻿@using Entities
+@model Entities.Product
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype = "multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span> 
+            </div>
+
+           <div class="form-group">
+                <label asp-for="Brend" class="control-label"></label>
+                <input asp-for="Brend" class="form-control" />
+                <span asp-validation-for="Brend" class="text-danger"></span>
+           </div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsFeatured" /> @Html.DisplayNameFor(model => model.IsFeatured)
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input id="price" asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+             <div  class="form-group">
+                <label asp-for="Discount" class="control-label"></label>
+                <input id="discount" asp-for="Discount" class="form-control">
+                <span asp-validation-for="Discount" class="text-danger"></span>
+           
+            </div>
+
+            <div class="form-group">
+               <label asp-for="TotalPrice" class="control-label"></label>
+               <button asp-for="TotalPrice" class="getDis">Get Total</button>
+               <input class="form-control" asp-for="TotalPrice" id="total">
+               <span asp-validation-for="TotalPrice" class="text-danger"></span>
+            </div>
+
+          <div class="form-group">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" class="form-control" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+
+       
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Available" /> @Html.DisplayNameFor(model => model.Available)
+                </label>
+            </div>
+          
+            <div class="form-group">
+                <label asp-for="PhotoUrl" class="control-label"></label>
+                  <input asp-for="PhotoUrl" class="form-control" type = "file"  style = "padding: 20px; display: block;"  name = "Image" />
+                <span asp-validation-for="PhotoUrl" class="text-danger"></span>
+            </div>
+
+           <div class="form-group">
+               <select asp-for="CategoryId" class="form-control mb-2">
+                    @foreach (var cat in ViewBag.CategoryList as List<Category>)
+                    {
+                        <option value="@cat.Id"> @cat.Name</option>
+                    }
+                </select>
+            </div>
+          
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+
+@section Scripts{
+  <script>
+
+
+        $(".getDis").on("click", function(e){
+                      e.preventDefault()
+           e.stopPropagation()
+                       var numVal1 = Number(document.getElementById("price").value);
+            var numVal2 = Number(document.getElementById("discount").value) / 100;
+            var totalValue = numVal1 - (numVal1 * numVal2)
+            document.getElementById("total").value = totalValue.toFixed(2);
+            console.log(numVal1)
+        })
+    </script>
+}
+
