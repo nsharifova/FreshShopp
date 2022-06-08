@@ -58,9 +58,11 @@ namespace Business.Concrete
         public List<Product> GetDiscount()
         {
             var discount = _context.Products.
-                Where(x => x.Discount != null).ToList();
+            Where(x => x.Discount != null).ToList();
             return discount;
+
         }
+
         public List<Product> Similar(int catId, int proId)
         {
             var pros = _context.Products

@@ -83,7 +83,6 @@
      transition: all .3s ease-in-out;
 }
 
-
  .btn-custom {
      margin-top: 20px;
      background-color: transparent !important;
@@ -898,17 +897,22 @@
      overflow: hidden;
      position: relative;
 }
- .box-img-hover img{
-     margin: 0 auto;
-     text-align: center;
-     display: block;
-}
- .type-lb{
-     position: absolute;
-     top: 0px;
-     right: 0px;
-     z-index:8;
-}
+
+.box-img-hover img {
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    height:200px;
+    object-fit:cover;
+   
+  }
+
+    .type-lb {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        z-index: 8;
+    }
  .type-lb .sale{
      background: #b0b435;
      color: #ffffff;
@@ -2014,27 +2018,28 @@
  .cart-box-main{
      padding: 70px 0px;
 }
- .table-main table thead{
+
+ .table-main table thead {
      background: #b0b435;
      color: #ffffff;
 }
+
  .table-main .table thead th{
      font-size: 18px;
 }
+
  .table-main table td.thumbnail-img{
      width: 120px;
 }
+
  .table-main table td{
      vertical-align: middle;
      font-size: 16px;
 }
- .quantity-box input{
-     width: 60px;
-     border: 2px solid #000000;
-     text-align: center;
+
+.cart-plus-minus {
+    width: 180px;
 }
-
-
 
 td.product-quantity input {
     color: #000;

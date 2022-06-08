@@ -45,19 +45,25 @@
                                         @if(item.Discount !=null && item.Discount>0)
                                         {
                                             <td class="price-pr">
-                                            <p>@item.TotalPrice</p>
+                                            <p>@item.TotalPrice AZN</p>
                                             </td>
 
                                         }
                                         else
                                         {
                                             <td class="price-pr">
-                                                <p>@item.Price</p>
+                                                <p>@item.Price AZN</p>
                                             </td>
                                         }
+                                        <td class="product-quantity">
+                                                    <div class="cart-plus-minus"><input type="text" value="@quantity">
+                                                        <div class="dec qtybutton" pro-id="@item.Id">-</div>
+                                                        <div class="inc qtybutton" pro-id="@item.Id">+</div>
+                                                    </div>
+                                                </td>
 
-                                    <td class="quantity-box"><input type="number" size="4" value="@quantity" min="0" step="1" class="c-input-text qty text"></td>
-
+@*                                    <td class="quantity-box"><input type="number" size="4" value="@quantity" min="0" step="1" class="c-input-text qty text"></td>
+*@
                                 
                                  
                                     <td class="total-pr">
@@ -134,3 +140,60 @@
 
         </div>
 </div>
+
+
+<style>
+
+  .cart-plus-minus {
+  float: none;
+  margin: 0 auto;
+  position: relative;
+
+}
+    .table-main .product-quantity {
+    float: none;
+}
+
+    .cart-plus-minus input {
+    border: 0px;
+    outline: 0px;
+    background: none;
+    font-weight: 400;
+    color: #222;
+    font-size: 14px;
+    display: inline-block;
+    height: 45px;
+    list-style: 45px;
+    padding: 0 50px;
+    width: 180px;
+    border: 1px solid #ebebeb;
+    text-align: center;
+    border-radius: 0;
+
+}
+
+    .cart-plus-minus .qtybutton {
+        font-size: 20px;
+        color: #222;
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        height: 22px;
+        width: 22px;
+        background: transparent;
+        border-radius: 30px;
+        line-height: 1;
+        cursor: pointer;
+        text-align: center;
+        border-radius: 0;
+        transform: translateY(-50%);
+    }
+
+    .cart-plus-minus .dec {
+        left: 20px;
+    }
+
+    .cart-plus-minus .inc {
+        right: 20px;
+    }
+</style>

@@ -108,10 +108,10 @@
                                 }
                                
                             </div>
-                            <img src="@item.PhotoUrl" class="img-fluid" alt="Image">
+                            <img src="@item.PhotoUrl" class="img-fluid sec-img" alt="Image">
                             <div class="mask-icon">
                                 <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                    <li><a href="/product/details/@item.Id" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
@@ -216,5 +216,11 @@
     </div>
     <!-- End Blog  -->
 
-
+    <style>
+    .sec-img{
+        height:200px;
+        object-fit:cover;
+    }
+    
+    </style>
   
